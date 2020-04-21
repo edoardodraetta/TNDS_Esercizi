@@ -1,0 +1,2 @@
+
+Running make generates test_vector.exe, which tests the implementation of the vector class. 

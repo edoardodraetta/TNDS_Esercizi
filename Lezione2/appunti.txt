@@ -4,3 +4,73 @@ On top of the rest of the assignment, i want to test turning in the assignment u
 
 This means i'll need to create a repo and include an instruction file. 
 
+OUTPUT FORMATTING
+
+include with header <iomanip>
+
+fixed: avoids exponents
+scientific: forces exponents
+setprecision(int n): forces a certain number of decimals
+
+e.g.
+
+cout << "Number (double) : " << setprecision(4) << number;
+
+(prints a number with four numbers after decimal)
+
+setw(int n): sets width of a field to n
+setfill(char c): uses c to fill space instead of a space
+
+e.g. prints numbers in aligned columns
+
+cout <<setw(5) <<"0.132" <<setw(5) <<"234" <<endl 
+	 <<setw(5) <<"10" <<setw(5) <<"12" <<endl
+
+(sets width to five before printing each item)
+
+STYLE: CALCULATING MEAN
+
+option 1 of calculating mean:
+
+stores cumsum of array elements into a variable. then divides that by the number of elements. return that directly without storing that as a variable.
+
+-- ./ (float division)
+-- static_cast<type> (convert to type)
+
+option 2: 
+
+calculate and store the mean at every step instead of storing the cumsum, which could become too large. 
+
+
+STYLE: CALCULATING VARIANCE
+
+option 1: 
+
+call caculatemean()
+
+option 2: 
+
+do not
+
+option 3:
+
+does not store cumsum
+
+LESSON BRIEFING:
+
+Affronteremo gli stessi problemi utilizzando un contenitore di dati più conveniente che l'array del C. Costruiremo la classe vettore nella prima parte. Nella seconda parte adatteremo le funzioni già scritte in modo che possano agire su oggetti di tipo vettore. 
+
+dati: double
+contenitore: vettore che scriveremo noi
+funzioni: mediate sui vettori
+
+2.0
+
+implementare una classe come dati membri privati di un intero (dimensione) ed un puntatore.
+
+implementare: 
+1. costruttore default che assegni valori nulli. 
+2. costruttore con argomento intero (usando new per allocare memoria necessaria)
+3. un distruttore che deve chiaramente deallocare con delete[] la zona di memoria allocata con new. 
+4. dei metodi per inserire e leggere i valori delle componenti, devono controllare che l'indice delle componenti richieste sia compatibile con la lunghezza del vettore. 
+
