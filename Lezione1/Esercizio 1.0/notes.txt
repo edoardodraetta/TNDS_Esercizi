@@ -1,0 +1,56 @@
+  esercizio_1_0.cpp
+
+
+
+ passing inputs from command line to a program:
+ ./programma <input1> <input2>
+ needs to be declared as
+ main(int argc, char **argv)
+ argc is the number of variables
+ the first argument is the program itself
+ argv is an array with argc elts that contains strings of chars
+
+ if we want to pass a number by command line, we will need to convert it to integer.
+ int N; N = atoi(argv[1]); (atof for float)
+
+ pointers:
+ & is address of operator
+ * is the deref operator, extracting a value from a pointer
+ ** means pointers to pointers
+ meaning ** creates an array
+
+  iostream.h is the library containing cout and cin.
+ " #include <iostream> "
+ we wont need to specify the object type
+
+ cout << "text" << varname << endl;
+ endl makes a new line and empties the buffer
+ cin >> a;
+ takes the value of a from terminal input.
+
+ dynamic (runtime) allocation
+ we use "new" and "delete"
+ e.g. double *x = new double[N]
+ creates a new pointer to an array of N doubles
+ delete[] x; (vectors)
+ delete x; (single var or first elt of vector
+ deallocates memory.
+ this is extremely important. otherwise the program could result in a memory leak.
+
+ fstream.h con ifstream and ofstream
+ ifstream inputFile("filename")
+ ifstream outputFile("filename")
+ we can use the following code to check if a file has been opened successfully
+/*
+ if(!inputFile){
+   cout <<"Error ...." <<endl; stampa un messaggio
+   return -1; ritorna un valore diverso da quello usuale
+ }
+ */
+
+ use of ifstream and ofstream is the same as for cout and cin
+ inputFile >> a;
+ outputfile << "text" << a << endl;
+
+ inputfile.eof(); returns true if the file has reach end.
+ close the file with inputFile.close(); (outoutFile.close();)

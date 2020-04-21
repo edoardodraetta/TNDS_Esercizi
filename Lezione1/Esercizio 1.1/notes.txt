@@ -1,0 +1,51 @@
+Vogliamo ora riorganizzare il codice precedente per renderlo più modulare e facilmente riutilizzabile. 
+
+Per capirci meglio: il calcolo della media e' una operazione generale che può essere immaginata come un blocco di codice che accetta in input un array di dati e una dimensione e restituisce un valore ( la media appunto ). 
+
+Se in uno stesso codice principale dobbiamo calcolare più volte la media di array di dati diversi non vogliamo ripetere più volte il frammento di codice relativo. Lo stesso vale per la lettura di un set di dati da un file o per il calcolo della mediana. 
+
+Il codice dovrebbe avere quindi una struttura del tipo
+- Dichiarazione di tutte le funzioni che verranno utilizzate.
+- Programma vero e proprio int main() {....} in cui le funzioni vengono utilizzate.
+- Al termine del programma principale l'implementazione di tutte le funzioni dichiarate.
+
+Dal momento che abbiamo deciso di spezzare il codice in funzioni proviamo a fare uso di una funzione dedicata che scambi tra loro due elementi di un array. In questo caso ripassiamo prima rapidamente come funziona il passaggio di dati in una funzione.
+
+
+pass by reference, by value, and by pointer:
+
+BY VALUE
+// the function receives the value of a 
+// bc it doesnt return anything, the incremented value of a is never saved
+// functions in this case copy the value into themselves. 
+
+void incrementa(int a){
+	a++;
+}
+
+int a = 0;
+increment(a); // a non viene incrementato!!
+
+BY REFERENCE
+// &a is the address of a. 
+// this address will be constant inside and outside of the function
+// so when we increment the value at that address, it will be saved. 
+// this way the variable is never copied! it's the same var!
+
+void incrementa(int &a){
+	a++;
+}
+
+int a = 0;
+increment(a);
+
+BY POINTER
+
+void incrementa(int *a){
+	(*a)++;
+}
+
+int a = 0;
+increment(&a);
+
+

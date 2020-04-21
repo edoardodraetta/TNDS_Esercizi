@@ -1,0 +1,29 @@
+makefile tutorial
+
+Vogliamo creare un Makefile che ci permetta di compilare il nostro programma quando questo è composto/spezzato in diversi file sorgenti. Supponiamo di avere un codice spezzato in
+
+esercizio1.2.cxx /// funzioni.cxx /// funzioni.h
+
+Ovviamente possiamo compilare il tutto con
+
+> g++ esercizio1.2.cxx funzioni.cxx -o esercizio1.2
+
+ma possiamo farlo in maniera molto più efficace. La struttura/sintassi del Makefile è la seguente:
+
+target: dipendenze
+[tab] system command
+
+Nel nostro caso
+
+esercizio1.2: funzioni.cxx esercizio1.2.cxx
+    g++ funzioni.cxx esercizio1.2.cxx -o esercizio1.2
+
+lanciando il comando make tutto viene compilato.
+Possiamo scriverlo anche esplicitando le dipendenze in modo che anche quando cambiamo il .h il tutto venga propriamente ricompilato In questo caso il Makefile diventa
+
+esercizio1.2: esercizio1.2.o funzioni.o
+    g++ esercizio1.2.o funzioni.o -o esercizio1.2
+esercizio1.2.o: esercizio1.2.cxx funzioni.h
+    g++ -c esercizio1.2.cxx -o esercizio1.2.o
+funzioni.o : funzioni.cxx funzioni.h
+    g++ -c funzioni.cxx -o funzioni.o
