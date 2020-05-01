@@ -101,10 +101,18 @@ void Selection_Sort( Vettore & V ){
     }     
 } 
 
+void Print(const char * filename, const Vettore & V){
+
+	ofstream fout(filename); 
+    for (int i = 0; i < V.GetN(); i++){
+        fout << V.GetComponent(i) << endl;
+    }
+
+    fout.close();
+}
+
 /*
 
-
-double CalculateMedian(Vettore);
 
 void Print(const char *, const Vettore &);  // prints to file
 void Print(const Vettore &);				// input elements from terminal

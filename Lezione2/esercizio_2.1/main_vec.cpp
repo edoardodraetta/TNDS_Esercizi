@@ -14,7 +14,7 @@ int main(){
 	// READ VECTOR FROM FILE
 
 	Vettore v_read = Read("input.dat", 5);
-	
+
 	cout << endl;
 	cout << "Vettore v_read : dimensione = " << v_read.GetN() << endl;
 
@@ -39,6 +39,10 @@ int main(){
 	cout << "|";
 	for (int i = 0; i < v_read.GetN(); i++) cout << v_read.GetComponent(i) << "|"; 
 	cout << endl;
+
+	// PRINTING TO FILE 	
+	
+	Print("sorted_output.dat", v_read);
 
 	// DEFAULT CONSTRUCTOR
 

@@ -11,7 +11,7 @@ Vettore Read(const char*, int);
 // passing by ref means variable can be modified
 double CalculateMean(const Vettore &);
 double CalculateVariance(const Vettore &);
-double CalculateMedian( Vettore );
+double CalculateMedian(const Vettore &);
 
 void Print(const char *, const Vettore &);  // prints to file
 void Print(const Vettore &);				// input elements from terminal
