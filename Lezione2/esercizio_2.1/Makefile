@@ -17,4 +17,6 @@ Vettore.o : Vettore.h Vettore.cpp
 
 clean : 
 	# removes old files
-	rm *.o main_vec.exe
+	rm *.o 
+cleanall: clean
+	rm main_vec.exe

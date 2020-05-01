@@ -44,6 +44,16 @@ int main(){
 	
 	Print("sorted_output.dat", v_read);
 
+	// INPUT FROM TERMINAL
+
+	int M;
+	cout << endl;
+	cout << "Enter vector dimension : ";
+	cin >> M;
+	Vettore v_input(M);
+
+	Print(v_input);
+
 	// DEFAULT CONSTRUCTOR
 
 	cout << endl;

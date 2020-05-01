@@ -14,7 +14,7 @@ double CalculateVariance(const Vettore &);
 double CalculateMedian(const Vettore &);
 
 void Print(const char *, const Vettore &);  // prints to file
-void Print(const Vettore &);				// input elements from terminal
+void Print(Vettore &);				// input elements from terminal
 
 void Selection_Sort(Vettore &); 
 void SwitchByRef(double &, double &);

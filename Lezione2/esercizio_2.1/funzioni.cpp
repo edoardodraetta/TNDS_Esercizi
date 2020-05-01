@@ -60,7 +60,7 @@ double CalculateVariance(const Vettore & V){
     return result;
 }
 
-// usesselection sort function
+// uses selection sort function
 double CalculateMedian(const Vettore & V){
 
 	Vettore Vcopy(V);
@@ -77,12 +77,14 @@ double CalculateMedian(const Vettore & V){
 	return median; 
 }
 
+// used in selection sort
 void SwitchByRef(double &a, double &b){
     double c=a;
     a = b;
     b = c;
 }
 
+// Sorting algorithm
 void Selection_Sort( Vettore & V ){
 
     for (int j=0; j<V.GetN()-1; j++){
@@ -101,6 +103,7 @@ void Selection_Sort( Vettore & V ){
     }     
 } 
 
+// Print vector contents to file
 void Print(const char * filename, const Vettore & V){
 
 	ofstream fout(filename); 
@@ -111,11 +114,36 @@ void Print(const char * filename, const Vettore & V){
     fout.close();
 }
 
-/*
+// writes a vector of predetermined size from terminal input
+void Print(Vettore & V){
 
+	cout << "Current array : " << "|";
+    for (int i = 0; i < V.GetN(); i++){
+        cout << V.GetComponent(i) << "|";
+    }
+    cout << endl;
 
-void Print(const char *, const Vettore &);  // prints to file
-void Print(const Vettore &);				// input elements from terminal
+    cout << "Please enter " << V.GetN() << " floating point numbers." << endl;
 
-void Selection_Sort(Vettore &); 
-*/
+    for (int i = 0; i < V.GetN(); i++){
+
+    	double elem = 0; 
+
+        cout << "Element number " << i+1 << ": ";
+        cin >> elem;
+
+        V.SetComponent(i, elem);
+
+        cout << "Current array : " << "|";
+        for (int i = 0; i < V.GetN(); i++){
+            cout << V.GetComponent(i) << "|";
+        }
+        cout << endl;
+
+    }
+    cout << "Final array : " << "|";
+    for (int i = 0; i < V.GetN(); i++){
+        cout << V.GetComponent(i) << "|";
+    }
+    cout << endl;
+}
