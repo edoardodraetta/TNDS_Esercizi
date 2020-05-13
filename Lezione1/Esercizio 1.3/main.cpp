@@ -11,8 +11,6 @@ int main(int argc, char** argv){
     int ndata = 5;
     double* data = new double[5];
     Print(data, ndata);
-    
-/*
 
     if ( argc < 3) {
         cout << "Uso del programa : " << argv[0] <<  "<n_data> <filename> " << endl;
@@ -48,7 +46,7 @@ int main(int argc, char** argv){
     // scrivo i dati riordinati su file
 
     Print("fileout.dat", data, ndata);
-*/
+
     delete [] data;
     return 0;
 }

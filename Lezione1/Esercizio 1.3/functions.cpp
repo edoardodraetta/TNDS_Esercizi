@@ -59,7 +59,6 @@ void Print (double * data, int size){
 }
 
 // calculates the mean of an array. 
-
 double CalculateMean(double * data, int size){
 
 	double mean = 0;
@@ -74,9 +73,7 @@ double CalculateMean(double * data, int size){
     return mean;
 }
 
-
 // calculates the variance of an array. 
-
 double CalculateVariance(double * data, int size){
 
 	double mean = 0;
@@ -99,9 +96,7 @@ double CalculateVariance(double * data, int size){
     return variance;
 }
 
-
 // element exchange
-
 void SwitchByValue(double a, double b){
     double c=a;
     a = b;
@@ -137,7 +132,6 @@ void selection_sort(double * vec, int size){
 }
 
 // Calculate median
-
 double CalculateMedian(double vec[], int size){
 
 
