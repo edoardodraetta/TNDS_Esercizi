@@ -1,0 +1,1 @@
+Make command generates main_vec.exe

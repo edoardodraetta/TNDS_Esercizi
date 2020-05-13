@@ -61,18 +61,17 @@ double CalculateVariance(const Vettore & V){
 }
 
 // uses selection sort function
-double CalculateMedian(const Vettore & V){
+// pass by value creates a copy of V within the function
+double CalculateMedian( Vettore V){
 
-	Vettore Vcopy(V);
-
-	Selection_Sort(Vcopy);
+	Selection_Sort(V);
 
 	double median = 0;
 
 	if ( V.GetN() % 2 == 0 ){
-		median = ( Vcopy[ V.GetN()/2 ] + Vcopy[ V.GetN()/2-1] ) / 2.0;
+		median = ( V[ V.GetN()/2 ] + V[ V.GetN()/2-1] ) / 2.0;
 	} else {
-		median = Vcopy[V.GetN()/2];
+		median = V[V.GetN()/2];
 	}
 	return median; 
 }
@@ -103,8 +102,33 @@ void Selection_Sort( Vettore & V ){
     }     
 } 
 
+// print to terminal
+
+// iomanip for floating point numbers:
+//     fixed - prints without exponents when possible
+//     scientific - prints using exponents
+//     setprecision(int n) - prints n numbers after the decimal
+//
+// setw(int n) - sets width of output field to n
+// setfill(char c) - uses c to fill space
+void Print(const Vettore & V){
+
+    cout << endl;
+    if (V.GetN() == 0 ){ 
+        cout << "Vector is null vector." << endl;
+
+    } else {
+        cout << "|";
+        for (int i = 0; i < V.GetN(); i++){
+        cout << V.GetComponent(i) << "|";  
+    } 
+    cout << endl;
+
+    }
+}
+
 // Print vector contents to file
-void Print(const char * filename, const Vettore & V){
+void PrintToFile(const char * filename, const Vettore & V){
 
 	ofstream fout(filename); 
     for (int i = 0; i < V.GetN(); i++){
@@ -115,35 +139,41 @@ void Print(const char * filename, const Vettore & V){
 }
 
 // writes a vector of predetermined size from terminal input
-void Print(Vettore & V){
+Vettore InputVector(){
 
-	cout << "Current array : " << "|";
-    for (int i = 0; i < V.GetN(); i++){
-        cout << V.GetComponent(i) << "|";
-    }
+    int M = 0 ;
     cout << endl;
+    cout << "Please enter desired vector dimension: ";
 
-    cout << "Please enter " << V.GetN() << " floating point numbers." << endl;
+	cin >> M;
 
-    for (int i = 0; i < V.GetN(); i++){
+    Vettore V(M);
 
-    	double elem = 0; 
+    if (M ==0) {
+        cout <<  "Vector is null vector." << endl;
+        return V;
 
-        cout << "Element number " << i+1 << ": ";
-        cin >> elem;
+    } else {
 
-        V.SetComponent(i, elem);
+        cout << "Please enter " << V.GetN() << " floating point numbers." << endl;
 
-        cout << "Current array : " << "|";
         for (int i = 0; i < V.GetN(); i++){
-            cout << V.GetComponent(i) << "|";
-        }
-        cout << endl;
 
-    }
-    cout << "Final array : " << "|";
-    for (int i = 0; i < V.GetN(); i++){
-        cout << V.GetComponent(i) << "|";
+        	double elem = 0; 
+
+            cout << "Element number " << i+1 << ": ";
+            cin >> elem;
+
+            V.SetComponent(i, elem);
+
+            if ( i != (V.GetN()-1) ){
+                cout << "Current array : ";
+                Print(V);
+            }
+        }
+        cout << "Final array : ";
+        Print(V);
+        return V;
     }
     cout << endl;
 }

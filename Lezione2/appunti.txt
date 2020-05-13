@@ -74,3 +74,10 @@ implementare:
 3. un distruttore che deve chiaramente deallocare con delete[] la zona di memoria allocata con new. 
 4. dei metodi per inserire e leggere i valori delle componenti, devono controllare che l'indice delle componenti richieste sia compatibile con la lunghezza del vettore. 
 
+2.1 
+
+Riscrivere il codice di analisi dati sulla classe vettore. 
+
+1. modificare tutte le funzioni in modo che lavorino con oggetti di tipo Vettore invece che con semplici array del C. 
+2. Modificare il main in modo che utilizzi la nuova classe vettore e le nuove funzioni. 
+3. modificare il makefile

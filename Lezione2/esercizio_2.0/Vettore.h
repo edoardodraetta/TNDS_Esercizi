@@ -19,7 +19,7 @@ class Vettore {
   public: // can be accessed as Vettore.obj
 
   	Vettore();						// default constructor
-  	Vettore(unsigned int N);		// constructor with dimension
+  	Vettore(unsigned int);		// constructor with dimension
 
   	~Vettore(); 					// destructor
 
