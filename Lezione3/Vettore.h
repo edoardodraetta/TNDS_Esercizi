@@ -1,7 +1,7 @@
 #ifndef __Vettore_h__
 #define __Vettore_h__
 
-// definizione e implementazione perche' oggetto template
+// definizione e implementazione perche' e' oggetto template
 
 #include <assert.h>
 #include <iostream>
@@ -13,7 +13,7 @@ public:
 
 	Vettore(){
 		// costruttore default
-		m_N = 0 
+		m_N = 0;
 		m_v = NULL;
 	};
 
@@ -30,7 +30,7 @@ public:
 	Vettore(const Vettore& V){
 		// costruttore copy
 		m_N = V.GetN();
-		m_v = new T[size];
+		m_v = new T[m_N];
 		for (int i = 0; i < m_N; i++){
 			m_v[i] = V.GetComponent(i);
 		}
@@ -73,8 +73,8 @@ public:
 
 		T temp = GetComponent(i);
 		
-		SetComponent(i, GetComponent(k));
-		SetComponent(k, temp);
+		SetComponent(i, GetComponent(j));
+		SetComponent(j, temp);
 	};
 
 	T& operator[] (unsigned int i){

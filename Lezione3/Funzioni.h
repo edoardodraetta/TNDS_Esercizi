@@ -11,6 +11,7 @@ using namespace std;
 // Vettore diventa Vettore <T>
 
 // READ/WRITE
+
 template <typename T> Vettore<T> Read(const char* filename, int ndata){
 	
 	Vettore<T> V(ndata);
@@ -18,18 +19,16 @@ template <typename T> Vettore<T> Read(const char* filename, int ndata){
 
 	if(!fin){
       cout << "Error: " << filename << " could not be read." <<endl; 
-      exit(11);
     } else {
         for (unsigned int i = 0; i<ndata; i++){
 
         	T val = 0;
-            in >> val;
+            fin >> val;
             V.SetComponent(i,val);
 
             // closes automatically
             if (fin.eof() ){
             	cout << "Reached end of file, exiting" << endl;
-            	exit(11);
             }
         }
     }
@@ -56,11 +55,12 @@ template <typename T> void Print(const Vettore <T> &V){
 // print to file
 template <typename T> void PrintToFile(const char * filename, const Vettore<T> &V){
 
+	ofstream fout(filename); 
+
 	if (!fout){ 
 		cerr << "Non posso creare il file " << filename << endl;
 		return;
 	}
-	ofstream fout(filename); 
     for (int i = 0; i < V.GetN(); i++){
         fout << V.GetComponent(i) << endl;
     }
@@ -112,49 +112,51 @@ template <typename T> Vettore <T> InputVector(){
 // MANIPULATION
 
 // passing by ref means variable can be modified
-template <typename T>  T CalculateMean(const Vettore <T> & V){
+// the output will be a double ...
+// 
+template <typename T>  double CalculateMean(const Vettore <T> & V){
 
-	T accumulo = 0;
+	double accumulo = 0;
 	if (V.GetN() == 0) return accumulo;
 
 	for (int i = 0; i < V.GetN(); i++){ 
 
-		accumulo = static_cast<T>(i)/static_cast<T>(i+1)*accumulo +
-				1./static_cast<T>(i+1) * V.GetComponent(i); 
+		accumulo = static_cast<double>(i)/static_cast<double>(i+1)*accumulo +
+				1./static_cast<double>(i+1) * V.GetComponent(i); 
 	}
 
     return accumulo;
 }
 
-template <typename T> T CalculateVariance(const Vettore <T> & V){
+template <typename T> double CalculateVariance(const Vettore <T> & V){
 	
-	T result = 0;
+	double result = 0;
 
 	if (V.GetN() == 0) return result;
 
-	T old_average, average = 0;
+	double old_average, average = 0;
 
 	for (int i = 0; i < V.GetN(); i++){
 
 		old_average = average;
-		average = static_cast<T>(i)/static_cast<T>(i+1)*average + 
-        	1./static_cast<T>(i+1) * V.GetComponent(i); 
+		average = static_cast<double>(i)/static_cast<double>(i+1)*average + 
+        	1./static_cast<double>(i+1) * V.GetComponent(i); 
 
-        result = 1./static_cast<T>(i+1) *
-          (static_cast<T>(i) * result + 
+        result = 1./static_cast<double>(i+1) *
+          (static_cast<double>(i) * result + 
           	V.GetComponent(i)*V.GetComponent(i) + 
-          	static_cast<T>(i) * old_average*old_average) -
+          	static_cast<double>(i) * old_average*old_average) -
           	average*average; 
     }
 
     return result;
 }
 
-template <typename T>  T CalculateMedian( Vettore <T> V){
+template <typename T>  double CalculateMedian( Vettore <T> V){
 
 	Selection_Sort(V);
 
-	T median = 0;
+	double median = 0;
 
 	if ( V.GetN() % 2 == 0 ){
 		median = ( V[ V.GetN()/2 ] + V[ V.GetN()/2-1] ) / 2.0;
@@ -163,6 +165,7 @@ template <typename T>  T CalculateMedian( Vettore <T> V){
 	}
 	return median; 
 }
+
 
 
 template <typename T> void SwitchByRef(T &a, T &b){
