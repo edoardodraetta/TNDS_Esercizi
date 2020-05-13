@@ -1,0 +1,37 @@
+Lezione 3
+
+- stessi problemi con un EVOLUZIONE della CLASSE VETTORE
+- possiamo rendere la classe piu' FLESSIBILE (contenere qualsiasi tipo di dato)?
+- ci porteremo ad utilizzare il vettore della STL
+
+FUNZIONI E CLASSI TEMPLATE
+
+- possono operare con tipi generici
+- e.g. vettore opera su numeri double --> opera su tipo T?
+
+supponiamo di voler dichiarare una classe vettore che al suo interno possa immagazzinare oggetti generici di tipo T. Nell'Header del file dovro' modificare la dichiarazione della classe vettore in questo modo:
+
+template < typename T > class Vettore {...};
+
+mentre quando dovro' creare nel main un oggetto di tipo Vettore per immagazzinare dei double:
+
+Vettore <double> v;
+
+Cioè una istanza della classe vettore specializzata per lavorare con dei double.
+
+Analogamente se pensiamo per esempio alla funzione CalcolaMedia() possiamo scrivere
+
+template < typename T > double CalcolaMeida (const Vettore <T> &v, unsigned int ndata) {...}
+
+e possiamo quindi utilizzare la funzione CalcolaMedia nel main nel modo seguente:
+
+cout << "media: " << CalcolaMedia <double> (v) << endl;
+
+3.0
+
+Evoluzione della classe vettore in classe template
+
+ Notate che quando usiamo classi o funzioni template non applichiamo la separazione tra header file (.h) e file di implementazione (.cxx) ma codifichiamo tutto dentro l'header file.
+
+- Generalizzazione classe vettore
+- adeguamento funzioni
