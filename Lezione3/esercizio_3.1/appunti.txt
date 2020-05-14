@@ -1,0 +1,6 @@
+Utilizzando la classe "vector"
+
+- il contenitore "ufficiale" di c++
+- la sua dimensione puo' essere manipolata
+- esistono funzioni standard che possono essere utilizzate senza sforzo
+
